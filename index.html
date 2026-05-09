@@ -240,12 +240,10 @@
             grid.appendChild(card);
         });
 
-        // Cập nhật thống kê
-        if (filterGroup === 'all') {
-            document.getElementById('total-count').innerText = exams.length;
-            document.getElementById('done-count').innerText = done;
-            document.getElementById('avg-score').innerText = done > 0 ? (totalScore / done).toFixed(1) : '0.0';
-        }
+        // Cập nhật thống kê dựa trên danh sách đang hiển thị
+        document.getElementById('total-count').innerText = (filterGroup === 'all' ? exams.length : exams.filter(e => e.group === filterGroup).length);
+        document.getElementById('done-count').innerText = done;
+        document.getElementById('avg-score').innerText = done > 0 ? (totalScore / done).toFixed(1) : '0.0';
     }
 
     window.onload = init;
