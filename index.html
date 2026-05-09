@@ -68,6 +68,24 @@
             outline: none; background: white; cursor: pointer; font-weight: 500;
         }
 
+        .stats-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 20px; margin-bottom: 40px; 
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px);
+            padding: 20px; border-radius: 20px; border: 1px solid white;
+            display: flex; align-items: center; gap: 15px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        .stat-icon { 
+            width: 50px; height: 50px; border-radius: 14px; 
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            background: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        .stat-value { font-size: 1.5rem; font-weight: 800; color: var(--text-main); line-height: 1; }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; margin-top: 4px; }
+
         .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px; }
         .exam-card {
             background: var(--card-bg); border-radius: var(--radius); overflow: hidden;
@@ -116,6 +134,21 @@
 </div>
 
 <div class="main-container">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-file-invoice" style="color: var(--primary);"></i></div>
+            <div><div class="stat-value" id="count-exams">0</div><div class="stat-label">Tổng số đề</div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-shapes" style="color: var(--secondary);"></i></div>
+            <div><div class="stat-value" id="count-subjects">0</div><div class="stat-label">Môn học</div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-users-rectangle" style="color: var(--warning);"></i></div>
+            <div><div class="stat-value" id="count-classes">0</div><div class="stat-label">Khối lớp</div></div>
+        </div>
+    </div>
+
     <div class="controls">
         <div class="search-row">
             <div class="search-box">
@@ -128,7 +161,7 @@
                 <label>Môn học</label>
                 <select id="monFilter" onchange="filterData()">
                     <option value="all">Tất cả môn</option>
-                    <option value="Chưa rõ">Chưa rõ</option><option value="Toán">Toán</option>
+                    <option value="Chưa rõ">Chưa rõ</option><option value="Hoàng Xuân Nhàn">Hoàng Xuân Nhàn</option><option value="Toán">Toán</option>
                 </select>
             </div>
             <div class="filter-item">
@@ -150,7 +183,15 @@
 </div>
 
 <script>
-    const allExams = [{"id": "02", "name": "Đề ôn tập số 02", "file": "2-DTK-HXN-02_conv.html", "group": "HXN"}, {"id": "03", "name": "Đề ôn tập số 03", "file": "2-DTK-HXN-03_conv.html", "group": "HXN"}, {"id": "04", "name": "Đề ôn tập số 04", "file": "2-DTK-HXN-04_conv.html", "group": "HXN"}, {"id": "De-Moon-1", "name": "De-Moon-1", "path": "Toán/De-Moon-1.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}, {"id": "De-Moon-2", "name": "De-Moon-2", "path": "Toán/De-Moon-2.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}, {"id": "De-Moon-4", "name": "De-Moon-4", "path": "Toán/De-Moon-4.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}, {"id": "De-Moon-5", "name": "De-Moon-5", "path": "Toán/De-Moon-5.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}];
+    const allExams = [{"id": "02", "name": "Đề ôn tập số 02", "file": "2-DTK-HXN-02_conv.html", "group": "HXN"}, {"id": "03", "name": "Đề ôn tập số 03", "file": "2-DTK-HXN-03_conv.html", "group": "HXN"}, {"id": "04", "name": "Đề ôn tập số 04", "file": "2-DTK-HXN-04_conv.html", "group": "HXN"}, {"id": "De-Moon-1", "name": "De-Moon-1", "path": "Toán/De-Moon-1.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}, {"id": "De-Moon-2", "name": "De-Moon-2", "path": "Toán/De-Moon-2.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}, {"id": "De-Moon-4", "name": "De-Moon-4", "path": "Toán/De-Moon-4.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}, {"id": "De-Moon-5", "name": "De-Moon-5", "path": "Toán/De-Moon-5.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}, {"id": "De-Moon-29", "name": "De-Moon-29", "path": "Hoàng Xuân Nhàn/De-Moon-29.html", "group": "Hoàng Xuân Nhàn", "mon": "Hoàng Xuân Nhàn", "lop": "12", "date": "09/05/2026"}, {"id": "De-Moon-30", "name": "De-Moon-30", "path": "Hoàng Xuân Nhàn/De-Moon-30.html", "group": "Hoàng Xuân Nhàn", "mon": "Hoàng Xuân Nhàn", "lop": "12", "date": "09/05/2026"}, {"id": "De-Moon-32", "name": "De-Moon-32", "path": "Hoàng Xuân Nhàn/De-Moon-32.html", "group": "Hoàng Xuân Nhàn", "mon": "Hoàng Xuân Nhàn", "lop": "12", "date": "09/05/2026"}, {"id": "De-Moon-33", "name": "De-Moon-33", "path": "Hoàng Xuân Nhàn/De-Moon-33.html", "group": "Hoàng Xuân Nhàn", "mon": "Hoàng Xuân Nhàn", "lop": "12", "date": "09/05/2026"}];
+
+    function updateStats(exams) {
+        document.getElementById('count-exams').innerText = exams.length;
+        const mons = new Set(exams.map(e => e.mon));
+        const lops = new Set(exams.map(e => e.lop));
+        document.getElementById('count-subjects').innerText = mons.size;
+        document.getElementById('count-classes').innerText = lops.size;
+    }
 
     function filterData() {
         const search = document.getElementById('searchInput').value.toLowerCase();
@@ -165,6 +206,7 @@
         });
 
         renderExams(filtered);
+        updateStats(filtered);
     }
 
     function renderExams(data) {
@@ -201,6 +243,7 @@
 
     // Khởi tạo
     renderExams(allExams);
+    updateStats(allExams);
 </script>
 </body>
 </html>
