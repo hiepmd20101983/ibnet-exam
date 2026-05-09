@@ -3,145 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Ôn Tập </title>
+    <title>Hệ Thống Ôn Tập Thông Minh</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #4f46e5;
-            --secondary: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --bg: #f1f5f9;
-            --text: #1e293b;
-            --card-bg: #ffffff;
+            --primary: #4f46e5; --secondary: #10b981; --warning: #f59e0b;
+            --bg: #f8fafc; --card: #ffffff; --text: #1e293b;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+        * { margin:0; padding:0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--text); }
         
-        header { background: var(--primary); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        .logo { font-size: 1.2rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
-        nav { display: flex; gap: 15px; }
-        nav a { color: white; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 8px 15px; border-radius: 20px; transition: 0.3s; background: rgba(255,255,255,0.1); }
-        nav a:hover { background: rgba(255,255,255,0.2); }
-        .btn-exit { background: white; color: var(--primary); }
-
-        .main-container { display: grid; grid-template-columns: 1fr 300px; gap: 30px; padding: 30px 5%; max-width: 1400px; margin: 0 auto; }
-
-        .exam-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-        .exam-section-header h2 { font-size: 1.4rem; font-weight: 700; color: var(--primary); text-transform: uppercase; }
-        .filter-box { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
-        .filter-box select { padding: 6px 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; }
-
-        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-        .exam-card { background: var(--card-bg); border-radius: 15px; padding: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #e2e8f0; position: relative; overflow: hidden; }
-        .exam-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .exam-card .title { font-size: 1.15rem; font-weight: 800; color: var(--primary); margin-bottom: 15px; min-height: 3rem; }
-        .tags { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
-        .tag { font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; display: flex; align-items: center; gap: 5px; }
-        .tag-subject { background: #ffedd5; color: #9a3412; }
-        .tag-time { background: #f0f9ff; color: #0369a1; }
-        .tag-count { background: #f0fdf4; color: #166534; }
+        header { background: var(--primary); color: white; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .user-info-bar { display: flex; align-items: center; gap: 15px; font-size: 0.9rem; }
         
-        .status-box { background: #f8fafc; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #64748b; display: flex; align-items: center; gap: 8px; border: 1px dashed #cbd5e1; }
-        .btn-start { display: block; width: 100%; text-align: center; background: var(--primary); color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: 700; transition: 0.3s; }
-        .btn-start:hover { filter: brightness(1.1); }
-        .done-badge { position: absolute; top: 15px; right: 15px; background: var(--secondary); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: 800; }
+        .main-container { display: grid; grid-template-columns: 1fr 320px; gap: 30px; padding: 30px 5%; max-width: 1400px; margin: 0 auto; }
+        
+        .filters { margin-bottom: 25px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 16px; border-radius: 20px; border: 1px solid var(--primary); background: white; color: var(--primary); cursor: pointer; font-weight: 600; font-size: 0.85rem; }
+        .filter-btn.active { background: var(--primary); color: white; }
+        
+        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .exam-card { background: var(--card); border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #e2e8f0; }
+        .exam-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .exam-card .group-badge { display: inline-block; padding: 3px 10px; background: #e0e7ff; color: #4338ca; border-radius: 10px; font-size: 0.7rem; font-weight: 800; margin-bottom: 10px; }
+        .exam-card h3 { font-size: 1.1rem; margin-bottom: 15px; min-height: 2.5rem; color: var(--primary); }
+        .exam-stats { display: flex; justify-content: space-between; font-size: 0.8rem; color: #64748b; margin-bottom: 15px; border-top: 1px solid #f1f5f9; padding-top: 10px; }
+        .btn-go { display: block; width: 100%; text-align: center; background: var(--primary); color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 700; }
+        
+        .sidebar-box { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .box-title { font-size: 1rem; font-weight: 800; margin-bottom: 15px; color: var(--primary); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        
+        .result-item { padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; }
+        .score-val { float: right; font-weight: 800; color: var(--secondary); }
 
-        .board-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .board-header { background: var(--warning); color: white; padding: 20px; text-align: center; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
-        .board-content { padding: 20px; }
-        .my-rank { margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; }
-        .rank-item { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; padding: 10px; border-radius: 10px; transition: 0.2s; }
-        .rank-item:hover { background: #f8fafc; }
-        .rank-num { width: 28px; height: 28px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem; }
-        .rank-1 { background: #fef3c7; color: #92400e; }
-        .rank-2 { background: #f1f5f9; color: #475569; }
-        .rank-info { flex: 1; }
-        .rank-name { font-size: 0.9rem; font-weight: 700; }
-        .rank-meta { font-size: 0.75rem; color: #94a3b8; }
-        .rank-score { font-weight: 800; color: var(--primary); }
+        /* Modal */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; }
+        .modal-content h2 { margin-bottom: 20px; text-align: center; }
+        .modal-content input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .btn-save { width: 100%; padding: 12px; background: var(--secondary); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
 
-        @media (max-width: 900px) {
-            .main-container { grid-template-columns: 1fr; }
-            .sidebar { order: -1; }
-        }
+        @media (max-width: 850px) { .main-container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo"><i class="fas fa-graduation-cap"></i> TRANG LUYỆN THI CỦA CÔ CẨM TÚ</div>
-        <nav>
-            <a href="#"><i class="fas fa-home"></i> Trang chủ</a>
-            <a href="#"><i class="fas fa-user"></i> Hồ sơ</a>
-            <a href="#" class="btn-exit"><i class="fas fa-sign-out-alt"></i> Thoát</a>
-        </nav>
+        <div style="font-weight: 900; font-size: 1.2rem;"><i class="fas fa-graduation-cap"></i> DASHBOARD</div>
+        <div class="user-info-bar">
+            <span id="header-user-name"><i class="fas fa-user-circle"></i> Học sinh</span>
+            <button onclick="showLogin()" style="background:none; border: 1px solid white; color: white; padding: 4px 10px; border-radius: 15px; cursor: pointer; font-size: 0.7rem;">Đổi thông tin</button>
+        </div>
     </header>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Chào bạn!</h2>
+            <p style="margin-bottom: 15px; font-size: 0.9rem; color: #666;">Vui lòng điền thông tin để bắt đầu làm bài và lưu kết quả.</p>
+            <input type="text" id="inputName" placeholder="Họ và tên">
+            <input type="text" id="inputClass" placeholder="Lớp (VD: 12A1)">
+            <button class="btn-save" onclick="saveInfo()">BẮT ĐẦU NGAY</button>
+        </div>
+    </div>
 
     <div class="main-container">
         <div class="content">
-            <div class="exam-section-header">
-                <h2><i class="fas fa-layer-group"></i> DANH SÁCH ĐỀ THI</h2>
-                <div class="filter-box">
-                    <span>LỌC CHỦ ĐỀ:</span>
-                    <select id="filter"><option value="all">-- Hiện tất cả --</option></select>
-                </div>
+            <div class="filters" id="groupFilters">
+                <button class="filter-btn active" onclick="filterGroup('all')">Tất cả</button>
             </div>
-            <div id="list" class="exam-grid"></div>
+            <div id="examGrid" class="exam-grid"></div>
         </div>
 
         <div class="sidebar">
-            <div class="board-card">
-                <div class="board-header"><i class="fas fa-crown"></i> BẢNG XẾP HẠNG</div>
-                <div class="board-content">
-                    <div class="my-rank">
-                        <p style="font-size: 0.8rem; font-weight: 700; color: #64748b; margin-bottom: 10px;">VỊ TRÍ CỦA BẠN:</p>
-                        <div class="rank-item" style="background: #f0f7ff; border: 1px solid #d0e7ff;">
-                            <div class="rank-num rank-2">?</div>
-                            <div class="rank-info">
-                                <div class="rank-name">Học sinh</div>
-                                <div class="rank-meta" id="my-stats">0 bài đã làm</div>
-                            </div>
-                            <div class="rank-score" id="my-total-score">0đ</div>
-                        </div>
-                    </div>
-                    <div id="leaderboard">
-                        <div class="rank-item">
-                            <div class="rank-num rank-1">1</div>
-                            <div class="rank-info">
-                                <div class="rank-name">Học sinh Test 🏆</div>
-                                <div class="rank-meta">15 bài thi</div>
-                            </div>
-                            <div class="rank-score">9.5</div>
-                        </div>
-                    </div>
+            <div class="sidebar-box">
+                <div class="box-title"><i class="fas fa-chart-line"></i> THỐNG KÊ CỦA BẠN</div>
+                <div id="statsContent">
+                    <p style="font-size: 0.9rem; margin-bottom: 8px;">Đã làm: <b id="stat-done">0</b> đề</p>
+                    <p style="font-size: 0.9rem; margin-bottom: 8px;">Điểm trung bình: <b id="stat-avg">0</b></p>
+                </div>
+            </div>
+
+            <div class="sidebar-box">
+                <div class="box-title"><i class="fas fa-history"></i> KẾT QUẢ GẦN ĐÂY</div>
+                <div id="historyContent">
+                    <p style="font-size: 0.8rem; color: #999;">Chưa có dữ liệu làm bài.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        const exams = [{'id': '1', 'name': 'Đề ôn tập số 1', 'file': 'TT-SGD-SonLa-L1-NH25-26.html'},
-            {'id': '1', 'name': 'Đề ôn tập số 1', 'file': 'TT-SGD-TuyenQuang-L1-NH25-26.html'}];
-        const listDiv = document.getElementById('list');
-        let doneCount = 0;
-        let totalScore = 0;
+        const exams = [{"id": "2", "name": "Đề ôn tập số 2", "file": "2-DTK-HXN-01_conv.html", "group": "2"}, {"id": "2", "name": "Đề ôn tập số 2", "file": "2-DTK-HXN-03_conv.html", "group": "2"}, {"id": "2", "name": "Đề ôn tập số 2", "file": "2-DTK-HXN-04_conv.html", "group": "2"}, {"id": "2", "name": "Đề ôn tập số 2", "file": "2-DTK-HXN-05_conv.html", "group": "2"}, {"id": "2", "name": "Đề ôn tập số 2", "file": "2-DTK-HXN-07_conv.html", "group": "2"}];
+        const groupsCount = {"2": 5};
+        
+        function init() {
+            checkUser();
+            renderFilters();
+            renderExams('all');
+            renderStats();
+        }
 
-        exams.forEach(ex => {
-            const score = localStorage.getItem('score_' + ex.file.replace('.html',''));
-            if(score) { doneCount++; totalScore += parseFloat(score); }
+        function checkUser() {
+            const info = JSON.parse(localStorage.getItem('student_info'));
+            if (!info) {
+                document.getElementById('loginModal').style.display = 'flex';
+            } else {
+                document.getElementById('header-user-name').innerHTML = `<i class="fas fa-user-circle"></i> ${info.name} - ${info.class}`;
+            }
+        }
+
+        function showLogin() {
+            const info = JSON.parse(localStorage.getItem('student_info') || '{}');
+            document.getElementById('inputName').value = info.name || '';
+            document.getElementById('inputClass').value = info.class || '';
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function saveInfo() {
+            const name = document.getElementById('inputName').value.strip();
+            const cls = document.getElementById('inputClass').value.strip();
+            if (!name) return alert('Vui lòng nhập tên!');
+            localStorage.setItem('student_info', JSON.stringify({ name, class: cls }));
+            document.getElementById('loginModal').style.display = 'none';
+            location.reload();
+        }
+
+        function renderFilters() {
+            const container = document.getElementById('groupFilters');
+            for (let g in groupsCount) {
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                btn.innerText = `${g} (${groupsCount[g]})`;
+                btn.onclick = () => filterGroup(g, btn);
+                container.appendChild(btn);
+            }
+        }
+
+        function filterGroup(group, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+            renderExams(group);
+        }
+
+        function renderExams(group) {
+            const grid = document.getElementById('examGrid');
+            grid.innerHTML = '';
+            exams.forEach(ex => {
+                if (group !== 'all' && ex.group !== group) return;
+                
+                const result = JSON.parse(localStorage.getItem('score_' + ex.file.replace('.html','')));
+                const score = result ? result.score : null;
+
+                grid.innerHTML += `
+                    <div class="exam-card">
+                        <span class="group-badge">${ex.group}</span>
+                        <h3>${ex.name}</h3>
+                        <div class="exam-stats">
+                            <span><i class="fas fa-clock"></i> 50p</span>
+                            <span><i class="fas fa-tasks"></i> 40 câu</span>
+                            <span>${score !== null ? `<b style="color:var(--secondary)">${score}đ</b>` : 'Chưa làm'}</span>
+                        </div>
+                        <a href="${ex.file}" class="btn-go">${score !== null ? 'LÀM LẠI' : 'VÀO LÀM'}</a>
+                    </div>
+                `;
+            });
+        }
+
+        function renderStats() {
+            let done = 0, sum = 0;
+            const history = document.getElementById('historyContent');
+            history.innerHTML = '';
             
-            const time = "50 phút", questions = "40 câu";
-            const subject = ex.name.includes("Toán") ? "Toán Học" : "LTDH";
-                        <span class="tag tag-count"><i class="fas fa-list-ol"></i> ${questions}</span>
-                    </div>
-                    <div class="status-box">
-                        <i class="fas fa-unlock-alt"></i> ${score ? `Điểm cao nhất: <b style="color: var(--secondary)">${score}đ</b>` : 'Trạng thái: <b>Thi tự do</b>'}
-                    </div>
-                    <a href="${ex.file}" class="btn-start"><i class="fas fa-paper-plane"></i> ${score ? 'LÀM LẠI BÀI' : 'VÀO LÀM BÀI'}</a>
-                </div>`;
-        });
-        document.getElementById('my-stats').innerText = `${doneCount} bài đã làm`;
-        document.getElementById('my-total-score').innerText = `${totalScore.toFixed(1)}đ`;
+            exams.forEach(ex => {
+                const res = JSON.parse(localStorage.getItem('score_' + ex.file.replace('.html','')));
+                if (res) {
+                    done++;
+                    sum += parseFloat(res.score);
+                    history.innerHTML += `
+                        <div class="result-item">
+                            <b>${ex.name}</b>
+                            <span class="score-val">${res.score}đ</span>
+                            <div style="font-size:0.7rem; color:#999;">${res.date}</div>
+                        </div>
+                    `;
+                }
+            });
+            
+            document.getElementById('stat-done').innerText = done;
+            document.getElementById('stat-avg').innerText = done > 0 ? (sum/done).toFixed(1) : 0;
+        }
+
+        String.prototype.strip = function() { return this.replace(/^\s+|\s+$/g, ''); };
+        window.onload = init;
     </script>
 </body>
 </html>
