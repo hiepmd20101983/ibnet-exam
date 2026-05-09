@@ -168,7 +168,7 @@ body { font-family: "Times New Roman", Times, serif; font-size: 13pt;
 </style>
 </head>
 <body>
-<div id="start-overlay"><h1>2-DTK-HXN-03_conv</h1><p>Thời gian: <b>90 phút</b></p><button class="btn-start" onclick="beginExam()">▶ Bắt đầu làm bài</button></div>
+<div id="start-overlay"><h1>2-DTK-HXN-03_conv</h1><p>Thời gian: <b>90 phút</b></p><button class="btn-start">▶ Bắt đầu làm bài</button></div>
 <div class="exam-wrapper" id="exam-wrapper">
   <div class="exam-header">
     <h1>2-DTK-HXN-03_conv</h1>
@@ -295,7 +295,7 @@ body { font-family: "Times New Roman", Times, serif; font-size: 13pt;
 <script>
 window.ANSWERS_DATA = [{"id": "1", "type": "mcq", "score": 0.25, "correct": 1}, {"id": "2", "type": "mcq", "score": 0.25, "correct": 1}, {"id": "3", "type": "mcq", "score": 0.25, "correct": 3}, {"id": "4", "type": "mcq", "score": 0.25, "correct": 2}, {"id": "5", "type": "mcq", "score": 0.25, "correct": 0}, {"id": "6", "type": "mcq", "score": 0.25, "correct": 1}, {"id": "7", "type": "mcq", "score": 0.25, "correct": 0}, {"id": "8", "type": "mcq", "score": 0.25, "correct": 3}, {"id": "9", "type": "mcq", "score": 0.25, "correct": 3}, {"id": "10", "type": "mcq", "score": 0.25, "correct": 1}, {"id": "11", "type": "mcq", "score": 0.25, "correct": 0}, {"id": "12", "type": "mcq", "score": 0.25, "correct": 1}, {"id": "13", "type": "tf", "score": 1.0, "items": [{"correct": true}, {"correct": false}, {"correct": false}, {"correct": true}]}, {"id": "14", "type": "tf", "score": 1.0, "items": [{"correct": true}, {"correct": false}, {"correct": true}, {"correct": false}]}, {"id": "15", "type": "tf", "score": 1.0, "items": [{"correct": false}, {"correct": false}, {"correct": false}, {"correct": true}]}, {"id": "16", "type": "tf", "score": 1.0, "items": [{"correct": false}, {"correct": true}, {"correct": false}, {"correct": false}]}, {"id": "17", "type": "short", "score": 0.5, "answer": "1,41"}, {"id": "18", "type": "short", "score": 0.5, "answer": "64"}, {"id": "19", "type": "short", "score": 0.5, "answer": "43,9"}, {"id": "20", "type": "short", "score": 0.5, "answer": "0,17"}, {"id": "21", "type": "short", "score": 0.5, "answer": "0,31"}, {"id": "22", "type": "short", "score": 0.5, "answer": "15,3"}];
 window.EXAM_TIME_LIMIT = 90;
-window.MIN_SUBMIT_TIME = 0;
+window.MIN_SUBMIT_TIME = 16;
 </script>
 <script>
 function each(sel, cb) {
@@ -358,11 +358,15 @@ function updateSubmitState() {
 }
 function submitExam(force) {
     force = !!force;
-    if (!window.examStarted) { alert("Nhấn 'Bắt đầu làm bài' trước."); return; }
+    if (!window.examStarted) { 
+    localStorage.setItem('score_2-DTK-HXN-03_conv', totalScore);
+    alert("Nhấn 'Bắt đầu làm bài' trước."); return; }
     if (!force && !canSubmitNow()) {
         var spent = examStartTime ? (new Date() - examStartTime) / 1000 : 0;
         var rem = Math.ceil((window.MIN_SUBMIT_TIME * 60 - spent) / 60);
-        alert("Cần chờ thêm " + rem + " phút nữa mới được nộp."); return;
+        
+    localStorage.setItem('score_2-DTK-HXN-03_conv', totalScore);
+    alert("Cần chờ thêm " + rem + " phút nữa mới được nộp."); return;
     }
     if (window.timerInterval) clearInterval(window.timerInterval);
     window.examLocked = true;
@@ -478,14 +482,18 @@ function updateTimerDisplay() {
 }
 function startTimer() {
     if (timeRemaining <= 0) return;
+    if (window.timerInterval) { clearInterval(window.timerInterval); window.timerInterval = null; }
     updateTimerDisplay();
     window.timerInterval = setInterval(function() {
         timeRemaining--;
         updateTimerDisplay();
-        if (timeRemaining <= 0) { clearInterval(window.timerInterval); window.examLocked = true; alert("Hết giờ!"); submitExam(true); }
+        if (timeRemaining <= 0) { clearInterval(window.timerInterval); window.timerInterval = null; window.examLocked = true; 
+    localStorage.setItem('score_2-DTK-HXN-03_conv', totalScore);
+    alert("Hết giờ!"); submitExam(true); }
     }, 1000);
 }
 function beginExam() {
+    if (window.examStarted) return;
     var ov = document.getElementById('start-overlay'), wr = document.getElementById('exam-wrapper');
     if (ov) ov.style.display = 'none';
     if (wr) wr.style.display = 'block';
@@ -515,14 +523,6 @@ window.onload = function() {
 };
 window.beginExam = beginExam; window.submitExam = submitExam; window.resetExam = resetExam;
 </script>
-<script>
-document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-document.addEventListener('copy', function(e) { e.preventDefault(); });
-document.addEventListener('selectstart', function(e) { e.preventDefault(); });
-document.addEventListener('keydown', function(e) {
-    if ((e.ctrlKey || e.metaKey) && ['c','a','u','s','p'].includes(e.key.toLowerCase()))
-        e.preventDefault();
-});
-</script>
+
 </body>
 </html>
