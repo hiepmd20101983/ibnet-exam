@@ -1,252 +1,184 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Ôn Tập Trực Tuyến</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #4f46e5;
-            --secondary: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --radius: 12px;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
+        <!DOCTYPE html>
+        <html lang="vi">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Hệ thống Đề thi Portal</title>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+            <style>
+                :root {
+                    --primary: #4f46e5;
+                    --primary-hover: #4338ca;
+                    --bg: #f8fafc;
+                    --text: #1e293b;
+                    --success: #10b981;
+                }
+                body { 
+                    font-family: 'Inter', sans-serif; 
+                    background-color: var(--bg); 
+                    color: var(--text);
+                    margin: 0; padding: 40px 5%;
+                }
+                .header { text-align: center; margin-bottom: 40px; }
+                .header h1 { font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 5px; }
+                
+                /* Stats Section */
+                .stats-container {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 20px;
+                    max-width: 1200px; margin: 0 auto 40px;
+                }
+                .stat-card {
+                    background: white; padding: 20px; border-radius: 16px;
+                    display: flex; align-items: center; gap: 15px;
+                    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+                }
+                .stat-icon {
+                    width: 45px; height: 45px; border-radius: 12px;
+                    display: flex; align-items: center; justify-content: center;
+                    font-size: 1.2rem;
+                }
+                .stat-label { color: #64748b; font-size: 0.85rem; font-weight: 600; }
+                .stat-value { font-size: 1.5rem; font-weight: 800; color: #1e293b; }
 
-        /* Header */
-        header {
-            background: #fff; border-bottom: 1px solid #e2e8f0;
-            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 100;
-        }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-        .user-info { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 500; cursor: pointer; padding: 5px 12px; border-radius: 20px; border: 1px solid #e2e8f0; transition: 0.2s; }
-        .user-info:hover { background: #f8fafc; }
+                .grid { 
+                    display: grid; 
+                    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+                    gap: 25px; 
+                    max-width: 1200px; margin: 0 auto;
+                }
+                .card { 
+                    background: white; padding: 25px; border-radius: 20px; 
+                    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s;
+                    position: relative; border: 1px solid #e2e8f0;
+                }
+                .card:hover { transform: translateY(-5px); }
+                
+                .status-badge { 
+                    font-size: 0.75rem; font-weight: 600; 
+                    padding: 4px 12px; border-radius: 9999px; 
+                    display: inline-block; margin-bottom: 15px;
+                    background: #f1f5f9; color: #64748b;
+                }
+                .status-badge.done { background: #d1fae5; color: #065f46; }
 
-        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+                .card h3 { font-size: 1.2rem; margin: 0 0 8px 0; line-height: 1.4; color: #0f172a; }
+                .card p { color: #64748b; font-size: 0.85rem; margin-bottom: 20px; }
+                
+                .card-footer {
+                    display: flex; align-items: center; justify-content: space-between;
+                    border-top: 1px solid #f1f5f9; padding-top: 20px;
+                }
+                .score-label { font-size: 0.9rem; color: #64748b; }
+                .score-val { color: var(--success); font-weight: 800; font-size: 1.1rem; }
 
-        /* Stats Section */
-        .stats-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem; margin-bottom: 2.5rem;
-        }
-        .stat-card {
-            background: var(--card-bg); padding: 1.5rem; border-radius: var(--radius);
-            box-shadow: var(--shadow); display: flex; align-items: center; gap: 1rem;
-        }
-        .stat-icon {
-            width: 48px; height: 48px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center; font-size: 1.25rem; color: #fff;
-        }
+                .btn { 
+                    background: var(--primary); color: white; 
+                    text-decoration: none; padding: 10px 20px; 
+                    border-radius: 10px; font-weight: 600; font-size: 0.9rem;
+                    transition: background 0.2s;
+                }
+                .btn:hover { background: var(--primary-hover); }
+                
+                .footer { text-align: center; margin-top: 60px; color: #94a3b8; font-size: 0.85rem; }
+                .status-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 5px; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>Hệ thống Đề thi Portal</h1>
+                <p>Theo dõi tiến độ và kết quả học tập</p>
+            </div>
 
-        /* Filters */
-        .filters { margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
-        .filter-btn { padding: 6px 15px; border-radius: 20px; border: 1px solid #e2e8f0; background: white; color: var(--text-muted); cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: 0.2s; }
-        .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-
-        /* Exam Grid */
-        .grid-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
-        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
-
-        .exam-card {
-            background: var(--card-bg); border-radius: var(--radius); overflow: hidden;
-            box-shadow: var(--shadow); border: 1px solid #f1f5f9; transition: transform 0.2s;
-        }
-        .exam-card:hover { transform: translateY(-4px); }
-        .card-content { padding: 1.5rem; }
-        
-        .badge {
-            display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-bottom: 10px;
-        }
-        .badge-todo { background: #e0e7ff; color: var(--primary); }
-        .badge-done { background: #d1fae5; color: var(--secondary); }
-
-        .exam-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .exam-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
-        
-        .result-info {
-            display: flex; justify-content: space-between; padding-top: 1rem;
-            border-top: 1px solid #f1f5f9; align-items: center;
-        }
-        .score-val { font-size: 1.25rem; font-weight: 800; color: var(--secondary); }
-
-        .btn-action {
-            display: block; width: 100%; text-align: center; padding: 12px;
-            text-decoration: none; font-weight: 700; font-size: 0.9rem;
-            transition: 0.3s;
-        }
-        .btn-start { background: var(--primary); color: #fff; }
-        .btn-redo { background: #f1f5f9; color: var(--text-main); }
-
-        /* Modal */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
-        .modal-content { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; }
-        .modal-content h2 { margin-bottom: 10px; text-align: center; }
-        .modal-content input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
-        .modal-content input:focus { border-color: var(--primary); }
-        .btn-save { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-    </style>
-</head>
-<body>
-
-<header>
-    <div class="logo"><i class="fas fa-graduation-cap"></i> EXAM PORTAL</div>
-    <div class="user-info" onclick="showLogin()">
-        <i class="far fa-user-circle"></i> 
-        <span id="user-display">Học viên</span>
-    </div>
-</header>
-
-<div id="loginModal" class="modal">
-    <div class="modal-content">
-        <h2>Chào bạn!</h2>
-        <p style="margin-bottom: 20px; font-size: 0.9rem; color: #666; text-align: center;">Nhập tên để lưu kết quả thi của bạn.</p>
-        <input type="text" id="inputName" placeholder="Họ và tên">
-        <input type="text" id="inputClass" placeholder="Lớp (Tùy chọn)">
-        <button class="btn-save" onclick="saveInfo()">BẮT ĐẦU</button>
-    </div>
-</div>
-
-<div class="container">
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-icon" style="background: var(--primary);"><i class="fas fa-layer-group"></i></div>
-            <div><p style="color:var(--text-muted); font-size: 0.8rem;">TỔNG SỐ ĐỀ</p><h3 id="total-count">0</h3></div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon" style="background: var(--secondary);"><i class="fas fa-check-double"></i></div>
-            <div><p style="color:var(--text-muted); font-size: 0.8rem;">ĐÃ HOÀN THÀNH</p><h3 id="done-count">0</h3></div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon" style="background: var(--warning);"><i class="fas fa-trophy"></i></div>
-            <div><p style="color:var(--text-muted); font-size: 0.8rem;">ĐIỂM TRUNG BÌNH</p><h3 id="avg-score">0.0</h3></div>
-        </div>
-    </div>
-
-    <div class="grid-header">
-        <h2 style="font-size: 1.25rem;">Danh sách đề thi</h2>
-    </div>
-    
-    <div class="filters" id="groupFilters">
-        <button class="filter-btn active" onclick="filterExams('all', this)">Tất cả</button>
-    </div>
-
-    <div class="exam-grid" id="examGrid"></div>
-</div>
-
-<script>
-    const exams = [{"id": "2", "name": "Đề ôn tập số 2", "file": "2-DTK-HXN-01_conv.html", "group": "2"}, {"id": "2", "name": "Đề ôn tập số 2", "file": "2-DTK-HXN-03_conv.html", "group": "2"}, {"id": "2", "name": "Đề ôn tập số 2", "file": "2-DTK-HXN-04_conv.html", "group": "2"}, {"id": "2", "name": "Đề ôn tập số 2", "file": "2-DTK-HXN-05_conv.html", "group": "2"}, {"id": "2", "name": "Đề ôn tập số 2", "file": "2-DTK-HXN-07_conv.html", "group": "2"}];
-    const groupsCount = {"2": 5};
-
-    function init() {
-        checkUser();
-        renderFilters();
-        renderExams('all');
-    }
-
-    function checkUser() {
-        const info = JSON.parse(localStorage.getItem('student_info'));
-        if (!info) {
-            document.getElementById('loginModal').style.display = 'flex';
-        } else {
-            document.getElementById('user-display').innerText = `${info.name} ${info.class ? '- ' + info.class : ''}`;
-        }
-    }
-
-    function showLogin() {
-        const info = JSON.parse(localStorage.getItem('student_info') || '{}');
-        document.getElementById('inputName').value = info.name || '';
-        document.getElementById('inputClass').value = info.class || '';
-        document.getElementById('loginModal').style.display = 'flex';
-    }
-
-    function saveInfo() {
-        const name = document.getElementById('inputName').value.trim();
-        const cls = document.getElementById('inputClass').value.trim();
-        if (!name) return alert('Vui lòng nhập tên!');
-        localStorage.setItem('student_info', JSON.stringify({ name, class: cls }));
-        location.reload();
-    }
-
-    function renderFilters() {
-        const container = document.getElementById('groupFilters');
-        for (let g in groupsCount) {
-            const btn = document.createElement('button');
-            btn.className = 'filter-btn';
-            btn.innerText = `${g} (${groupsCount[g]})`;
-            btn.onclick = (e) => filterExams(g, e.target);
-            container.appendChild(btn);
-        }
-    }
-
-    function filterExams(group, btn) {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderExams(group);
-    }
-
-    function renderExams(filterGroup) {
-        const grid = document.getElementById('examGrid');
-        let done = 0;
-        let totalScore = 0;
-
-        grid.innerHTML = '';
-        
-        exams.forEach(ex => {
-            if (filterGroup !== 'all' && ex.group !== filterGroup) return;
-
-            const storageKey = 'score_' + ex.file.replace('.html', '');
-            const history = JSON.parse(localStorage.getItem(storageKey));
-            
-            const isDone = history !== null;
-            if (isDone) {
-                done++;
-                totalScore += parseFloat(history.score);
-            }
-
-            const card = document.createElement('div');
-            card.className = 'exam-card';
-            card.innerHTML = `
-                <div class="card-content">
-                    <span class="badge ${isDone ? 'badge-done' : 'badge-todo'}">
-                        ${isDone ? '<i class="fas fa-check"></i> Đã làm' : '<i class="far fa-circle"></i> Chưa làm'}
-                    </span>
-                    <h3 class="exam-title">${ex.name}</h3>
-                    <div class="exam-meta">
-                        <span><i class="far fa-folder"></i> Nhóm: ${ex.group}</span>
-                    </div>
-                    <div class="result-info">
-                        <span style="font-size:0.8rem; color:var(--text-muted)">
-                            ${isDone ? `<i class="far fa-calendar-alt"></i> ` + history.date : 'Chưa có kết quả'}
-                        </span>
-                        <span class="score-val">${isDone ? history.score + 'đ' : '--'}</span>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #eef2ff; color: #4f46e5;">📚</div>
+                    <div>
+                        <div class="stat-label">Tổng số đề</div>
+                        <div class="stat-value" id="total-exams">0</div>
                     </div>
                 </div>
-                <a href="${ex.file}" class="btn-action ${isDone ? 'btn-redo' : 'btn-start'}">
-                    ${isDone ? 'LÀM LẠI' : 'BẮT ĐẦU LÀM BÀI'}
-                </a>
-            `;
-            grid.appendChild(card);
-        });
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #ecfdf5; color: #10b981;">✅</div>
+                    <div>
+                        <div class="stat-label">Đã hoàn thành</div>
+                        <div class="stat-value" id="completed-exams">0</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #fffbeb; color: #f59e0b;">🏆</div>
+                    <div>
+                        <div class="stat-label">Điểm trung bình</div>
+                        <div class="stat-value" id="avg-score">0.0</div>
+                    </div>
+                </div>
+            </div>
 
-        // Cập nhật thống kê dựa trên danh sách đang hiển thị
-        document.getElementById('total-count').innerText = (filterGroup === 'all' ? exams.length : exams.filter(e => e.group === filterGroup).length);
-        document.getElementById('done-count').innerText = done;
-        document.getElementById('avg-score').innerText = done > 0 ? (totalScore / done).toFixed(1) : '0.0';
-    }
+            <div class="grid">
+            <div class="card" data-file="2-DTK-HXN-02_conv.html">
+                <div class="card-status status-badge">○ Chưa làm</div>
+                <h3>Đề ôn tập số 02</h3>
+                <p>Nhóm: 2</p>
+                <div class="card-footer">
+                    <span class="score-label">Kết quả: <b class="score-val">--</b></span>
+                    <a href="2-DTK-HXN-02_conv.html" class="btn">Bắt đầu làm bài</a>
+                </div>
+            </div>
+            <div class="card" data-file="2-DTK-HXN-03_conv.html">
+                <div class="card-status status-badge">○ Chưa làm</div>
+                <h3>Đề ôn tập số 03</h3>
+                <p>Nhóm: 2</p>
+                <div class="card-footer">
+                    <span class="score-label">Kết quả: <b class="score-val">--</b></span>
+                    <a href="2-DTK-HXN-03_conv.html" class="btn">Bắt đầu làm bài</a>
+                </div>
+            </div></div>
 
-    window.onload = init;
-</script>
-</body>
-</html>
+            <div class="footer">
+                <p><span class="status-dot"></span> Hệ thống đang trực tuyến • Version 5.1</p>
+            </div>
+
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const history = JSON.parse(localStorage.getItem('exam_history') || '{}');
+                const cards = document.querySelectorAll('.card');
+                let completed = 0;
+                let totalScore = 0;
+                let countWithScore = 0;
+
+                cards.forEach(card => {
+                    const examFile = card.getAttribute('data-file');
+                    const examId = examFile.replace('.html', '');
+                    const record = history[examId];
+                    
+                    const statusBadge = card.querySelector('.status-badge');
+                    const scoreVal = card.querySelector('.score-val');
+                    const btn = card.querySelector('.btn');
+
+                    if (record) {
+                        completed++;
+                        statusBadge.textContent = '✔ Đã làm';
+                        statusBadge.classList.add('done');
+                        scoreVal.textContent = record.score + ' đ';
+                        btn.textContent = 'Làm lại';
+                        
+                        const scoreNum = parseFloat(record.score);
+                        if (!isNaN(scoreNum)) {
+                            totalScore += scoreNum;
+                            countWithScore++;
+                        }
+                    }
+                });
+
+                document.getElementById('total-exams').textContent = cards.length;
+                document.getElementById('completed-exams').textContent = completed;
+                if (countWithScore > 0) {
+                    document.getElementById('avg-score').textContent = (totalScore / countWithScore).toFixed(1);
+                }
+            });
+            </script>
+        </body>
+        </html>
