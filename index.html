@@ -3,48 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Ôn Tập</title>
+    <title>Hệ Thống Ôn Tập - Cô Cẩm Tú</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --p: #2563eb; --bg: #f8fafc; }
-        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); padding: 20px; color: #1e293b; }
-        .container { max-width: 600px; margin: 0 auto; }
-        .stat-card { background: white; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .exam-item { background: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #e2e8f0; }
-        .btn { padding: 8px 16px; border-radius: 6px; text-decoration: none; background: var(--p); color: white; font-weight: 500; transition: 0.2s; }
-        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
-        .badge { background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 15px; font-size: 12px; font-weight: bold; }
+        :root {
+            --primary: #4f46e5;
+            --secondary: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --bg: #f1f5f9;
+            --text: #1e293b;
+            --card-bg: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+        
+        header { background: var(--primary); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.2rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        nav { display: flex; gap: 15px; }
+        nav a { color: white; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 8px 15px; border-radius: 20px; transition: 0.3s; background: rgba(255,255,255,0.1); }
+        nav a:hover { background: rgba(255,255,255,0.2); }
+        .btn-exit { background: white; color: var(--primary); }
+
+        .main-container { display: grid; grid-template-columns: 1fr 300px; gap: 30px; padding: 30px 5%; max-width: 1400px; margin: 0 auto; }
+
+        .exam-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .exam-section-header h2 { font-size: 1.4rem; font-weight: 700; color: var(--primary); text-transform: uppercase; }
+        .filter-box { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+        .filter-box select { padding: 6px 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; }
+
+        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+        .exam-card { background: var(--card-bg); border-radius: 15px; padding: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #e2e8f0; position: relative; overflow: hidden; }
+        .exam-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .exam-card .title { font-size: 1.15rem; font-weight: 800; color: var(--primary); margin-bottom: 15px; min-height: 3rem; }
+        .tags { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+        .tag { font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; display: flex; align-items: center; gap: 5px; }
+        .tag-subject { background: #ffedd5; color: #9a3412; }
+        .tag-time { background: #f0f9ff; color: #0369a1; }
+        .tag-count { background: #f0fdf4; color: #166534; }
+        
+        .status-box { background: #f8fafc; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: #64748b; display: flex; align-items: center; gap: 8px; border: 1px dashed #cbd5e1; }
+        .btn-start { display: block; width: 100%; text-align: center; background: var(--primary); color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: 700; transition: 0.3s; }
+        .btn-start:hover { filter: brightness(1.1); }
+        .done-badge { position: absolute; top: 15px; right: 15px; background: var(--secondary); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: 800; }
+
+        .board-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .board-header { background: var(--warning); color: white; padding: 20px; text-align: center; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .board-content { padding: 20px; }
+        .my-rank { margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; }
+        .rank-item { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; padding: 10px; border-radius: 10px; transition: 0.2s; }
+        .rank-item:hover { background: #f8fafc; }
+        .rank-num { width: 28px; height: 28px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem; }
+        .rank-1 { background: #fef3c7; color: #92400e; }
+        .rank-2 { background: #f1f5f9; color: #475569; }
+        .rank-info { flex: 1; }
+        .rank-name { font-size: 0.9rem; font-weight: 700; }
+        .rank-meta { font-size: 0.75rem; color: #94a3b8; }
+        .rank-score { font-weight: 800; color: var(--primary); }
+
+        @media (max-width: 900px) {
+            .main-container { grid-template-columns: 1fr; }
+            .sidebar { order: -1; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="stat-card">
-            <h1>🎓 Quản Lý Học Tập</h1>
-            <h2 id="summary">Đang tải...</h2>
+    <header>
+        <div class="logo"><i class="fas fa-graduation-cap"></i> TRANG LUYỆN THI CỦA CÔ CẨM TÚ</div>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> Trang chủ</a>
+            <a href="#"><i class="fas fa-user"></i> Hồ sơ</a>
+            <a href="#" class="btn-exit"><i class="fas fa-sign-out-alt"></i> Thoát</a>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="content">
+            <div class="exam-section-header">
+                <h2><i class="fas fa-layer-group"></i> DANH SÁCH ĐỀ THI</h2>
+                <div class="filter-box">
+                    <span>LỌC CHỦ ĐỀ:</span>
+                    <select id="filter"><option value="all">-- Hiện tất cả --</option></select>
+                </div>
+            </div>
+            <div id="list" class="exam-grid"></div>
         </div>
-        <div id="list"></div>
+
+        <div class="sidebar">
+            <div class="board-card">
+                <div class="board-header"><i class="fas fa-crown"></i> BẢNG XẾP HẠNG</div>
+                <div class="board-content">
+                    <div class="my-rank">
+                        <p style="font-size: 0.8rem; font-weight: 700; color: #64748b; margin-bottom: 10px;">VỊ TRÍ CỦA BẠN:</p>
+                        <div class="rank-item" style="background: #f0f7ff; border: 1px solid #d0e7ff;">
+                            <div class="rank-num rank-2">?</div>
+                            <div class="rank-info">
+                                <div class="rank-name">Học sinh</div>
+                                <div class="rank-meta" id="my-stats">0 bài đã làm</div>
+                            </div>
+                            <div class="rank-score" id="my-total-score">0đ</div>
+                        </div>
+                    </div>
+                    <div id="leaderboard">
+                        <div class="rank-item">
+                            <div class="rank-num rank-1">1</div>
+                            <div class="rank-info">
+                                <div class="rank-name">Học sinh Test 🏆</div>
+                                <div class="rank-meta">15 bài thi</div>
+                            </div>
+                            <div class="rank-score">9.5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script>
-        const exams = [{'id': '2', 'name': 'Đề ôn tập số 2', 'file': '2-DTK-HXN-01_conv.html'},
-            {'id': '2', 'name': 'Đề ôn tập số 2', 'file': '2-DTK-HXN-03_conv.html'},
-            {'id': '2', 'name': 'Đề ôn tập số 2', 'file': '2-DTK-HXN-04_conv.html'},
-            {'id': '2', 'name': 'Đề ôn tập số 2', 'file': '2-DTK-HXN-05_conv.html'},
-            {'id': '2', 'name': 'Đề ôn tập số 2', 'file': '2-DTK-HXN-07_conv.html'}];
+        const exams = [{'id': '8', 'name': 'Đề ôn tập số 8', 'file': '8-CK2-De01.html'},
+            {'id': '8', 'name': 'Đề ôn tập số 8', 'file': '8-CK2-De02.html'},
+            {'id': '8', 'name': 'Đề ôn tập số 8', 'file': '8-CK2-De03.html'},
+            {'id': '8', 'name': 'Đề ôn tập số 8', 'file': '8-CK2-De04.html'},
+            {'id': '8', 'name': 'Đề ôn tập số 8', 'file': '8-CK2-De05.html'}];
         const listDiv = document.getElementById('list');
-        let done = 0;
+        let doneCount = 0;
+        let totalScore = 0;
 
         exams.forEach(ex => {
             const score = localStorage.getItem('score_' + ex.file.replace('.html',''));
-            if(score) done++;
+            if(score) { doneCount++; totalScore += parseFloat(score); }
+            
+            const time = "50 phút", questions = "40 câu";
+            const subject = ex.name.includes("Toán") ? "Toán Học" : "Tiếng Anh";
+
             listDiv.innerHTML += `
-                <div class="exam-item">
-                    <div>
-                        <b>${ex.name}</b><br>
-                        ${score ? `<span class="badge">Đã làm: ${score}đ</span>` : '<small style="color: #64748b;">Chưa hoàn thành</small>'}
+                <div class="exam-card">
+                    ${score ? '<span class="done-badge">HOÀN THÀNH</span>' : ''}
+                    <div class="title">${ex.name}</div>
+                    <div class="tags">
+                        <span class="tag tag-subject"><i class="fas fa-book"></i> ${subject}</span>
+                        <span class="tag tag-time"><i class="fas fa-clock"></i> ${time}</span>
+                        <span class="tag tag-count"><i class="fas fa-list-ol"></i> ${questions}</span>
                     </div>
-                    <a href="${ex.file}" class="btn">${score ? 'Làm lại' : 'Bắt đầu'}</a>
+                    <div class="status-box">
+                        <i class="fas fa-unlock-alt"></i> ${score ? `Điểm cao nhất: <b style="color: var(--secondary)">${score}đ</b>` : 'Trạng thái: <b>Thi tự do</b>'}
+                    </div>
+                    <a href="${ex.file}" class="btn-start"><i class="fas fa-paper-plane"></i> ${score ? 'LÀM LẠI BÀI' : 'VÀO LÀM BÀI'}</a>
                 </div>`;
         });
-        document.getElementById('summary').innerText = `Hoàn thành: ${done}/${exams.length}`;
+        document.getElementById('my-stats').innerText = `${doneCount} bài đã làm`;
+        document.getElementById('my-total-score').innerText = `${totalScore.toFixed(1)}đ`;
     </script>
 </body>
 </html>
