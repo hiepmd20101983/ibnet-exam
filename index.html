@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Ôn Tập - Cô Cẩm Tú</title>
+    <title>Hệ Thống Ôn Tập </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -120,11 +120,8 @@
     </div>
 
     <script>
-        const exams = [{'id': '8', 'name': 'Đề ôn tập số 8', 'file': '8-CK2-De01.html'},
-            {'id': '8', 'name': 'Đề ôn tập số 8', 'file': '8-CK2-De02.html'},
-            {'id': '8', 'name': 'Đề ôn tập số 8', 'file': '8-CK2-De03.html'},
-            {'id': '8', 'name': 'Đề ôn tập số 8', 'file': '8-CK2-De04.html'},
-            {'id': '8', 'name': 'Đề ôn tập số 8', 'file': '8-CK2-De05.html'}];
+        const exams = [{'id': '1', 'name': 'Đề ôn tập số 1', 'file': 'TT-SGD-SonLa-L1-NH25-26.html'},
+            {'id': '1', 'name': 'Đề ôn tập số 1', 'file': 'TT-SGD-TuyenQuang-L1-NH25-26.html'}];
         const listDiv = document.getElementById('list');
         let doneCount = 0;
         let totalScore = 0;
@@ -134,15 +131,7 @@
             if(score) { doneCount++; totalScore += parseFloat(score); }
             
             const time = "50 phút", questions = "40 câu";
-            const subject = ex.name.includes("Toán") ? "Toán Học" : "Tiếng Anh";
-
-            listDiv.innerHTML += `
-                <div class="exam-card">
-                    ${score ? '<span class="done-badge">HOÀN THÀNH</span>' : ''}
-                    <div class="title">${ex.name}</div>
-                    <div class="tags">
-                        <span class="tag tag-subject"><i class="fas fa-book"></i> ${subject}</span>
-                        <span class="tag tag-time"><i class="fas fa-clock"></i> ${time}</span>
+            const subject = ex.name.includes("Toán") ? "Toán Học" : "LTDH";
                         <span class="tag tag-count"><i class="fas fa-list-ol"></i> ${questions}</span>
                     </div>
                     <div class="status-box">
