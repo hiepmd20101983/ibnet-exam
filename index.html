@@ -3,170 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Quản Lý Ôn Tập Trắc Nghiệm</title>
+    <title>Hệ Thống Ôn Tập</title>
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --success-color: #10b981;
-            --bg-color: #f8fafc;
-            --text-color: #1e293b;
-        }
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .stat-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .stat-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        .exam-list {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .exam-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid #f1f5f9;
-            transition: background 0.2s;
-        }
-        .exam-item:hover {
-            background: #fdfdfd;
-        }
-        .exam-info h3 {
-            margin: 0 0 5px 0;
-            font-size: 18px;
-        }
-        .exam-status {
-            font-size: 14px;
-            color: #64748b;
-        }
-        .btn-action {
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        .btn-start {
-            background: var(--primary-color);
-            color: white;
-        }
-        .btn-start:hover {
-            background: #1d4ed8;
-        }
-        .score-badge {
-            background: #dcfce7;
-            color: #166534;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
+        :root { --p: #2563eb; --bg: #f8fafc; }
+        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); padding: 20px; color: #1e293b; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .stat-card { background: white; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .exam-item { background: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #e2e8f0; }
+        .btn { padding: 8px 16px; border-radius: 6px; text-decoration: none; background: var(--p); color: white; font-weight: 500; transition: 0.2s; }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .badge { background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 15px; font-size: 12px; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>📊 Bảng Điều Khiển Ôn Tập</h1>
-            <p>Chào mừng bạn quay trở lại. Hãy chọn đề và bắt đầu làm bài!</p>
-        </header>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">Bài đã làm</div>
-                <div id="total-done" class="stat-value">0/3</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Điểm trung bình</div>
-                <div id="avg-score" class="stat-value">0.0</div>
-            </div>
+        <div class="stat-card">
+            <h1>🎓 Quản Lý Học Tập</h1>
+            <h2 id="summary">Đang tải...</h2>
         </div>
-
-        <div class="exam-list">
-            <!-- Đề 3 -->
-            <div class="exam-item">
-                <div class="exam-info">
-                    <h3>📝 Đề Thi Số 03</h3>
-                    <div id="status-03" class="exam-status">Chưa hoàn thành</div>
-                </div>
-                <div id="action-03">
-                    <a href="2-DTK-HXN-03_conv.html" class="btn-action btn-start">Làm bài</a>
-                </div>
-            </div>
-            <!-- Đề 4 -->
-            <div class="exam-item">
-                <div class="exam-info">
-                    <h3>📝 Đề Thi Số 04</h3>
-                    <div id="status-04" class="exam-status">Chưa hoàn thành</div>
-                </div>
-                <div id="action-04">
-                    <a href="2-DTK-HXN-04_conv.html" class="btn-action btn-start">Làm bài</a>
-                </div>
-            </div>
-            <!-- Đề 5 -->
-            <div class="exam-item">
-                <div class="exam-info">
-                    <h3>📝 Đề Thi Số 05</h3>
-                    <div id="status-05" class="exam-status">Chưa hoàn thành</div>
-                </div>
-                <div id="action-05">
-                    <a href="2-DTK-HXN-05_conv.html" class="btn-action btn-start">Làm bài</a>
-                </div>
-            </div>
-        </div>
+        <div id="list"></div>
     </div>
-
     <script>
-        // Hàm load dữ liệu từ trình duyệt
-        function loadStats() {
-            const exams = ['03', '04', '05'];
-            let doneCount = 0;
-            let totalScore = 0;
+        const exams = [{'id': '2', 'name': 'Đề ôn tập số 2', 'file': '2-DTK-HXN-07_conv.html'},
+            {'id': '2', 'name': 'Đề ôn tập số 2', 'file': '2-DTK-HXN-05_conv.html'},
+            {'id': '2', 'name': 'Đề ôn tập số 2', 'file': '2-DTK-HXN-04_conv.html'},
+            {'id': '2', 'name': 'Đề ôn tập số 2', 'file': '2-DTK-HXN-03_conv.html'},
+            {'id': '2', 'name': 'Đề ôn tập số 2', 'file': '2-DTK-HXN-01_conv.html'}];
+        const listDiv = document.getElementById('list');
+        let done = 0;
 
-            exams.forEach(id => {
-                // Giả sử các file đề thi của bạn sau khi làm xong sẽ lưu điểm vào localStorage với key dạng 'score_03'
-                const score = localStorage.getItem('score_' + id);
-                if (score !== null) {
-                    doneCount++;
-                    totalScore += parseFloat(score);
-                    document.getElementById('status-' + id).innerHTML = 'Đã làm - <span class="score-badge">' + score + ' điểm</span>';
-                    document.getElementById('action-' + id).innerHTML = '<a href="2-DTK-HXN-' + id + '_conv.html" class="btn-action" style="color:var(--primary-color)">Làm lại</a>';
-                }
-            });
-
-            document.getElementById('total-done').innerText = doneCount + '/3';
-            document.getElementById('avg-score').innerText = doneCount > 0 ? (totalScore / doneCount).toFixed(1) : '0.0';
-        }
-
-        window.onload = loadStats;
+        exams.forEach(ex => {
+            const score = localStorage.getItem('score_' + ex.file.replace('.html',''));
+            if(score) done++;
+            listDiv.innerHTML += `
+                <div class="exam-item">
+                    <div>
+                        <b>${ex.name}</b><br>
+                        ${score ? `<span class="badge">Đã làm: ${score}đ</span>` : '<small style="color: #64748b;">Chưa hoàn thành</small>'}
+                    </div>
+                    <a href="${ex.file}" class="btn">${score ? 'Làm lại' : 'Bắt đầu'}</a>
+                </div>`;
+        });
+        document.getElementById('summary').innerText = `Hoàn thành: ${done}/${exams.length}`;
     </script>
 </body>
 </html>
