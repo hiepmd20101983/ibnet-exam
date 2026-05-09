@@ -130,7 +130,7 @@ body {
 <div class="exam-wrapper" id="exam-wrapper">
   <div class="exam-header">
     <h1>2-DTK-HXN-03_conv</h1>
-    
+    <h2>TN THPT Hoàng Xuân Nhàn</h2>
   </div>
   
   
@@ -440,7 +440,11 @@ function startExamTimer() {
         }
         if (remaining <= 0) {
             clearInterval(examTimerInterval);
-            alert("Đã hết thời gian làm bài! Hệ thống sẽ tự động nộp bài.");
+            
+    const studentInfo = JSON.parse(localStorage.getItem('student_info') || '{}');
+    const result = { score: totalScore, date: new Date().toLocaleString(), name: studentInfo.name || 'Ẩn danh', class: studentInfo.class || 'N/A', exam: '2-DTK-HXN-03_conv' };
+    localStorage.setItem('score_2-DTK-HXN-03_conv', JSON.stringify(result));
+    alert("Đã hết thời gian làm bài! Hệ thống sẽ tự động nộp bài.");
             submitExam(true);
         }
         remaining--;
@@ -456,7 +460,11 @@ function submitExam(bypassConfirm) {
         var nameInp = document.querySelector('input[placeholder="…"]');
         var emailInp = document.getElementById('student-email-input');
         if ((!nameInp || !nameInp.value.trim()) || (!emailInp || !emailInp.value.trim())) {
-            alert("Vui lòng nhập Họ tên và Email trước khi nộp bài!");
+            
+    const studentInfo = JSON.parse(localStorage.getItem('student_info') || '{}');
+    const result = { score: totalScore, date: new Date().toLocaleString(), name: studentInfo.name || 'Ẩn danh', class: studentInfo.class || 'N/A', exam: '2-DTK-HXN-03_conv' };
+    localStorage.setItem('score_2-DTK-HXN-03_conv', JSON.stringify(result));
+    alert("Vui lòng nhập Họ tên và Email trước khi nộp bài!");
             if (nameInp && !nameInp.value.trim()) nameInp.focus();
             else if (emailInp) emailInp.focus();
             return;
