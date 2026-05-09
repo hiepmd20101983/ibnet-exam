@@ -1,94 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Portal Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #10b981;
+            --bg: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --radius: 20px;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg); color: var(--text-main); min-height: 100vh; overflow-x: hidden; }
+        
+        /* Background decorative elements */
+        .bg-glow {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
 
-        <!DOCTYPE html>
-        <html lang="vi">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Hệ thống Đề thi Trực tuyến</title>
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-            <style>
-                :root {
-                    --primary: #4f46e5;
-                    --primary-hover: #4338ca;
-                    --bg: #f8fafc;
-                    --text: #1e293b;
-                }
-                body { 
-                    font-family: 'Inter', sans-serif; 
-                    background-color: var(--bg); 
-                    color: var(--text);
-                    margin: 0; padding: 40px 5%;
-                }
-                .header { text-align: center; margin-bottom: 50px; }
-                .header h1 { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
-                .header p { color: #64748b; font-size: 1.1rem; }
-                
-                .grid { 
-                    display: grid; 
-                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-                    gap: 25px; 
-                    max-width: 1200px; margin: 0 auto;
-                }
-                .card { 
-                    background: white; padding: 30px; border-radius: 20px; 
-                    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
-                    transition: transform 0.2s, box-shadow 0.2s;
-                    position: relative; border: 1px solid #e2e8f0;
-                }
-                .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-                
-                .badge { 
-                    background: #eef2ff; color: var(--primary); 
-                    font-size: 0.75rem; font-weight: 600; 
-                    padding: 4px 12px; border-radius: 9999px; 
-                    display: inline-block; margin-bottom: 15px;
-                }
-                .card h3 { font-size: 1.25rem; margin: 0 0 10px 0; line-height: 1.4; }
-                .card p { color: #64748b; font-size: 0.9rem; margin-bottom: 20px; }
-                
-                .btn { 
-                    display: block; text-align: center; 
-                    background: var(--primary); color: white; 
-                    text-decoration: none; padding: 12px; 
-                    border-radius: 12px; font-weight: 600;
-                    transition: background 0.2s;
-                }
-                .btn:hover { background: var(--primary-hover); }
-                
-                .footer { text-align: center; margin-top: 60px; color: #94a3b8; font-size: 0.9rem; }
-                .status-dot { 
-                    display: inline-block; width: 8px; height: 8px; 
-                    background: #10b981; border-radius: 50%; 
-                    margin-right: 5px; box-shadow: 0 0 8px #10b981;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="header">
-                <h1>Hệ thống Đề thi Portal</h1>
-                <p>Nền tảng quản lý và làm bài tập trực tuyến chuyên nghiệp</p>
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            padding: 20px 0; position: sticky; top: 0; z-index: 100;
+        }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+
+        .hero { padding: 60px 20px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 3rem; font-weight: 800; background: linear-gradient(to right, #4f46e5, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
+        .hero p { font-size: 1.1rem; color: var(--text-muted); }
+
+        .main-container { max-width: 1200px; margin: 0 auto 60px; padding: 0 20px; }
+        
+        .controls {
+            background: var(--card-bg); backdrop-filter: blur(10px);
+            padding: 30px; border-radius: var(--radius);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
+            border: 1px solid white; display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px;
+        }
+        .search-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .search-box { position: relative; flex: 1; min-width: 300px; }
+        .search-box i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+        .search-box input {
+            width: 100%; padding: 14px 20px 14px 50px; border: 1.5px solid #e2e8f0;
+            border-radius: 15px; outline: none; transition: 0.3s; font-size: 1rem;
+            background: rgba(248, 250, 252, 0.5);
+        }
+        .search-box input:focus { border-color: var(--primary); background: white; box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
+
+        .filter-groups { display: flex; gap: 15px; flex-wrap: wrap; }
+        .filter-item { display: flex; align-items: center; gap: 10px; }
+        .filter-item label { font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
+        .filter-item select {
+            padding: 10px 16px; border-radius: 12px; border: 1.5px solid #e2e8f0;
+            outline: none; background: white; cursor: pointer; font-weight: 500;
+        }
+
+        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px; }
+        .exam-card {
+            background: var(--card-bg); border-radius: var(--radius); overflow: hidden;
+            border: 1px solid white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; flex-direction: column; opacity: 0; transform: translateY(20px);
+        }
+        .exam-card.show { opacity: 1; transform: translateY(0); }
+        .exam-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1); border-color: var(--primary-light); }
+        
+        .card-body { padding: 25px; flex: 1; }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .card-tag {
+            display: inline-block; padding: 5px 14px; border-radius: 10px;
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+            background: #eef2ff; color: var(--primary);
+        }
+        .card-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--text-main); line-height: 1.3; }
+        .card-info { display: flex; gap: 15px; font-size: 0.85rem; color: var(--text-muted); }
+        .card-info span { display: flex; align-items: center; gap: 6px; }
+        
+        .btn-start {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: calc(100% - 50px); margin: 0 25px 25px; padding: 14px;
+            background: var(--primary); color: white; text-decoration: none;
+            font-weight: 700; border-radius: 14px; transition: 0.3s;
+        }
+        .btn-start:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+        .empty-state { text-align: center; padding: 80px 20px; grid-column: 1/-1; display: none; }
+        .empty-state i { font-size: 5rem; color: #e2e8f0; margin-bottom: 25px; }
+    </style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<header>
+    <div class="header-inner">
+        <div class="logo"><i class="fas fa-bolt-lightning"></i> ExamPortal</div>
+    </div>
+</header>
+
+<div class="hero">
+    <h1>Học Tập Thông Minh</h1>
+    <p>Nền tảng thi thử và ôn luyện trắc nghiệm với giao diện trực quan, kết quả tức thì.</p>
+</div>
+
+<div class="main-container">
+    <div class="controls">
+        <div class="search-row">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Tìm tên đề thi..." oninput="filterData()">
             </div>
-            <div class="grid">
-            <div class="card">
-                <div class="badge">Đề ôn tập số</div>
-                <h3>Đề ôn tập số 02</h3>
-                <p>Mã đề: <code>02</code></p>
-                <a href="2-DTK-HXN-02_conv.html" class="btn">Vào làm bài</a>
+        </div>
+        <div class="filters">
+            <div class="filter-item">
+                <label>Môn học</label>
+                <select id="monFilter" onchange="filterData()">
+                    <option value="all">Tất cả môn</option>
+                    <option value="Chưa rõ">Chưa rõ</option><option value="Toán">Toán</option>
+                </select>
             </div>
-            <div class="card">
-                <div class="badge">Đề ôn tập số</div>
-                <h3>Đề ôn tập số 03</h3>
-                <p>Mã đề: <code>03</code></p>
-                <a href="2-DTK-HXN-03_conv.html" class="btn">Vào làm bài</a>
+            <div class="filter-item">
+                <label>Lớp</label>
+                <select id="lopFilter" onchange="filterData()">
+                    <option value="all">Tất cả lớp</option>
+                    <option value="12">12</option><option value="Chưa rõ">Chưa rõ</option>
+                </select>
             </div>
-            <div class="card">
-                <div class="badge">Đề ôn tập số</div>
-                <h3>Đề ôn tập số 04</h3>
-                <p>Mã đề: <code>04</code></p>
-                <a href="2-DTK-HXN-04_conv.html" class="btn">Vào làm bài</a>
-            </div></div>
-            <div class="footer">
-                <p><span class="status-dot"></span> Hệ thống đang trực tuyến • Version 5.0</p>
-            </div>
-        </body>
-        </html>
+        </div>
+    </div>
+
+    <div class="exam-grid" id="examGrid"></div>
+    <div class="empty-state" id="emptyState">
+        <i class="fas fa-folder-open"></i>
+        <h2>Hệ thống chưa tìm thấy dữ liệu</h2>
+        <p>Thử điều chỉnh lại từ khóa hoặc bộ lọc của bạn nhé.</p>
+    </div>
+</div>
+
+<script>
+    const allExams = [{"id": "02", "name": "Đề ôn tập số 02", "file": "2-DTK-HXN-02_conv.html", "group": "HXN"}, {"id": "03", "name": "Đề ôn tập số 03", "file": "2-DTK-HXN-03_conv.html", "group": "HXN"}, {"id": "04", "name": "Đề ôn tập số 04", "file": "2-DTK-HXN-04_conv.html", "group": "HXN"}, {"id": "De-Moon-1", "name": "De-Moon-1", "path": "Toán/De-Moon-1.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}, {"id": "De-Moon-2", "name": "De-Moon-2", "path": "Toán/De-Moon-2.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}, {"id": "De-Moon-4", "name": "De-Moon-4", "path": "Toán/De-Moon-4.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}, {"id": "De-Moon-5", "name": "De-Moon-5", "path": "Toán/De-Moon-5.html", "group": "Toán", "mon": "Toán", "lop": "12", "date": "2024-05-10"}];
+
+    function filterData() {
+        const search = document.getElementById('searchInput').value.toLowerCase();
+        const mon = document.getElementById('monFilter').value;
+        const lop = document.getElementById('lopFilter').value;
+
+        const filtered = allExams.filter(ex => {
+            const matchSearch = ex.name.toLowerCase().includes(search);
+            const matchMon = mon === 'all' || ex.mon === mon;
+            const matchLop = lop === 'all' || ex.lop === lop;
+            return matchSearch && matchMon && matchLop;
+        });
+
+        renderExams(filtered);
+    }
+
+    function renderExams(data) {
+        const grid = document.getElementById('examGrid');
+        const empty = document.getElementById('emptyState');
+        grid.innerHTML = '';
+        
+        if (data.length === 0) {
+            empty.style.display = 'block';
+            return;
+        }
+        empty.style.display = 'none';
+
+        data.forEach((ex, index) => {
+            const card = document.createElement('div');
+            card.className = 'exam-card';
+            card.innerHTML = `
+                <div class="card-body">
+                    <div class="card-header">
+                        <span class="card-tag">${ex.mon} • Lớp ${ex.lop}</span>
+                    </div>
+                    <h3 class="card-title">${ex.name}</h3>
+                    <div class="card-info">
+                        <span><i class="far fa-calendar-alt"></i> ${ex.date || '09/05/2026'}</span>
+                        <span><i class="far fa-folder"></i> ${ex.group}</span>
+                    </div>
+                </div>
+                <a href="${ex.path}" class="btn-start">LÀM BÀI NGAY <i class="fas fa-chevron-right"></i></a>
+            `;
+            grid.appendChild(card);
+            setTimeout(() => card.classList.add('show'), index * 50);
+        });
+    }
+
+    // Khởi tạo
+    renderExams(allExams);
+</script>
+</body>
+</html>
