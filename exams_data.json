@@ -1,489 +1,326 @@
 [
     {
-        "id": "TT-Cum5-NinhBinh-NH25-26",
-        "name": "TT-Cum5-NinhBinh-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-Cum5-NinhBinh-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-Cum-09-HaNoi-L2-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-Cum-09-HaNoi-L2-NH25-26",
-        "name": "TT-Cum-09-HaNoi-L2-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-Cum-09-HaNoi-L2-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-Cum5-NinhBinh-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-KSCL-THPT-Chuyen-Quang-Trung-BinhPhuoc-NH25-26",
-        "name": "TT-KSCL-THPT-Chuyen-Quang-Trung-BinhPhuoc-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-KSCL-THPT-Chuyen-Quang-Trung-BinhPhuoc-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-KSCL-THPT-Chuyen-Quang-Trung-BinhPhuoc-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-Lien-Truong-HaNoi-NH25-26",
-        "name": "TT-Lien-Truong-HaNoi-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-Lien-Truong-HaNoi-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-Lien-Truong-HaNoi-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-SGD NinhBinh-L2-NH25-26(CapNhat)",
-        "name": "TT-SGD NinhBinh-L2-NH25-26(CapNhat)",
-        "path": "TN THPT/De-Truong-So/TT-SGD NinhBinh-L2-NH25-26(CapNhat).html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-SGD NinhBinh-L2-NH25-26(CapNhat).html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-SGD-HaNoi-L1-NH25-26",
-        "name": "TT-SGD-HaNoi-L1-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-SGD-HaNoi-L1-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-SGD-HaNoi-L1-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-SGD-HungYen-Lan1-N25-26",
-        "name": "TT-SGD-HungYen-Lan1-N25-26",
-        "path": "TN THPT/De-Truong-So/TT-SGD-HungYen-Lan1-N25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-SGD-HungYen-Lan1-N25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-SGD-LangSon-NH25-26",
-        "name": "TT-SGD-LangSon-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-SGD-LangSon-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-SGD-LangSon-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-SGD-SonLa-L1-NH25-26",
-        "name": "TT-SGD-SonLa-L1-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-SGD-SonLa-L1-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-SGD-SonLa-L1-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-THPT-LeQuyDon-DongDa-HaNoi--NH25-26",
-        "name": "TT-THPT-LeQuyDon-DongDa-HaNoi--NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-THPT-LeQuyDon-DongDa-HaNoi--NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-THPT-LeQuyDon-DongDa-HaNoi--NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-THPT-LeThanhTong-L8-HCM-NH25-26",
-        "name": "TT-THPT-LeThanhTong-L8-HCM-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-THPT-LeThanhTong-L8-HCM-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-THPT-LeThanhTong-L8-HCM-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-THPT-MaiAnhTuan-ThanhHoa-NH25-26",
-        "name": "TT-THPT-MaiAnhTuan-ThanhHoa-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-THPT-MaiAnhTuan-ThanhHoa-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-THPT-MaiAnhTuan-ThanhHoa-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-THPT-NguyenTrai-HaNoi-NH25-26",
-        "name": "TT-THPT-NguyenTrai-HaNoi-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-THPT-NguyenTrai-HaNoi-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-THPT-NguyenTrai-HaNoi-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-THPT-NguyenTrungThien-HaTinh-NH25-26",
-        "name": "TT-THPT-NguyenTrungThien-HaTinh-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-THPT-NguyenTrungThien-HaTinh-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-THPT-NguyenTrungThien-HaTinh-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
     },
     {
-        "id": "TT-THPT-PhanBoiChau-KhanhHoa-NH25-26",
-        "name": "TT-THPT-PhanBoiChau-KhanhHoa-NH25-26",
-        "path": "TN THPT/De-Truong-So/TT-THPT-PhanBoiChau-KhanhHoa-NH25-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/De-Truong-So/TT-THPT-PhanBoiChau-KhanhHoa-NH25-26.html",
+        "group": "TN THPT/De-Truong-So"
+    },
+    {
+        "id": "01",
+        "name": "Đề ôn tập số 01",
+        "file": "TN THPT/HXN/2-DTK-HXN-01.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "02",
+        "name": "Đề ôn tập số 02",
+        "file": "TN THPT/HXN/2-DTK-HXN-02.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "03",
+        "name": "Đề ôn tập số 03",
+        "file": "TN THPT/HXN/2-DTK-HXN-03.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "04",
+        "name": "Đề ôn tập số 04",
+        "file": "TN THPT/HXN/2-DTK-HXN-04.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "05",
+        "name": "Đề ôn tập số 05",
+        "file": "TN THPT/HXN/2-DTK-HXN-05.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "07",
+        "name": "Đề ôn tập số 07",
+        "file": "TN THPT/HXN/2-DTK-HXN-07.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "08",
+        "name": "Đề ôn tập số 08",
+        "file": "TN THPT/HXN/2-DTK-HXN-08.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "09",
+        "name": "Đề ôn tập số 09",
+        "file": "TN THPT/HXN/2-DTK-HXN-09.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "10",
+        "name": "Đề ôn tập số 10",
+        "file": "TN THPT/HXN/2-DTK-HXN-10.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "11",
+        "name": "Đề ôn tập số 11",
+        "file": "TN THPT/HXN/2-DTK-HXN-11.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "12",
+        "name": "Đề ôn tập số 12",
+        "file": "TN THPT/HXN/2-DTK-HXN-12.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "13",
+        "name": "Đề ôn tập số 13",
+        "file": "TN THPT/HXN/2-DTK-HXN-13.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "14",
+        "name": "Đề ôn tập số 14",
+        "file": "TN THPT/HXN/2-DTK-HXN-14.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "15",
+        "name": "Đề ôn tập số 15",
+        "file": "TN THPT/HXN/2-DTK-HXN-15.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "16",
+        "name": "Đề ôn tập số 16",
+        "file": "TN THPT/HXN/2-DTK-HXN-16.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "17",
+        "name": "Đề ôn tập số 17",
+        "file": "TN THPT/HXN/2-DTK-HXN-17.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "18",
+        "name": "Đề ôn tập số 18",
+        "file": "TN THPT/HXN/2-DTK-HXN-18.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "19",
+        "name": "Đề ôn tập số 19",
+        "file": "TN THPT/HXN/2-DTK-HXN-19.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "20",
+        "name": "Đề ôn tập số 20",
+        "file": "TN THPT/HXN/2-DTK-HXN-20.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "21",
+        "name": "Đề ôn tập số 21",
+        "file": "TN THPT/HXN/2-DTK-HXN-21.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "22",
+        "name": "Đề ôn tập số 22",
+        "file": "TN THPT/HXN/2-DTK-HXN-22.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "23",
+        "name": "Đề ôn tập số 23",
+        "file": "TN THPT/HXN/2-DTK-HXN-23.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "24",
+        "name": "Đề ôn tập số 24",
+        "file": "TN THPT/HXN/2-DTK-HXN-24.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "25",
+        "name": "Đề ôn tập số 25",
+        "file": "TN THPT/HXN/2-DTK-HXN-25.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "26",
+        "name": "Đề ôn tập số 26",
+        "file": "TN THPT/HXN/2-DTK-HXN-26.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "11",
+        "name": "Đề ôn tập số 11",
+        "file": "TN THPT/HXN/2-DTK-PNL-11.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "12",
+        "name": "Đề ôn tập số 12",
+        "file": "TN THPT/HXN/2-DTK-PNL-12.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "13",
+        "name": "Đề ôn tập số 13",
+        "file": "TN THPT/HXN/2-DTK-PNL-13.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "14",
+        "name": "Đề ôn tập số 14",
+        "file": "TN THPT/HXN/2-DTK-PNL-14.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "15",
+        "name": "Đề ôn tập số 15",
+        "file": "TN THPT/HXN/2-DTK-PNL-15.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "16",
+        "name": "Đề ôn tập số 16",
+        "file": "TN THPT/HXN/2-DTK-PNL-16.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "17",
+        "name": "Đề ôn tập số 17",
+        "file": "TN THPT/HXN/2-DTK-PNL-17.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "18",
+        "name": "Đề ôn tập số 18",
+        "file": "TN THPT/HXN/2-DTK-PNL-18.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "19",
+        "name": "Đề ôn tập số 19",
+        "file": "TN THPT/HXN/2-DTK-PNL-19.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "20",
+        "name": "Đề ôn tập số 20",
+        "file": "TN THPT/HXN/2-DTK-PNL-20.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "21",
+        "name": "Đề ôn tập số 21",
+        "file": "TN THPT/HXN/2-DTK-PNL-21.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "22",
+        "name": "Đề ôn tập số 22",
+        "file": "TN THPT/HXN/2-DTK-PNL-22.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "23",
+        "name": "Đề ôn tập số 23",
+        "file": "TN THPT/HXN/2-DTK-PNL-23.html",
+        "group": "TN THPT/HXN"
+    },
+    {
+        "id": "24",
+        "name": "Đề ôn tập số 24",
+        "file": "TN THPT/HXN/2-DTK-PNL-24.html",
+        "group": "TN THPT/HXN"
     }
-    {
-        "id": "2-DTK-HXN-01",
-        "name": "2-DTK-HXN-01",
-        "path": "TN THPT/2-DTK-HXN-01.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-02",
-        "name": "2-DTK-HXN-02",
-        "path": "TN THPT/2-DTK-HXN-02.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-03",
-        "name": "2-DTK-HXN-03",
-        "path": "TN THPT/2-DTK-HXN-03.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-04",
-        "name": "2-DTK-HXN-04",
-        "path": "TN THPT/2-DTK-HXN-04.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-05",
-        "name": "2-DTK-HXN-05",
-        "path": "TN THPT/2-DTK-HXN-05.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-07",
-        "name": "2-DTK-HXN-07",
-        "path": "TN THPT/2-DTK-HXN-07.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-08",
-        "name": "2-DTK-HXN-08",
-        "path": "TN THPT/2-DTK-HXN-08.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-09",
-        "name": "2-DTK-HXN-09",
-        "path": "TN THPT/2-DTK-HXN-09.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-10",
-        "name": "2-DTK-HXN-10",
-        "path": "TN THPT/2-DTK-HXN-10.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-11",
-        "name": "2-DTK-HXN-11",
-        "path": "TN THPT/2-DTK-HXN-11.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-12",
-        "name": "2-DTK-HXN-12",
-        "path": "TN THPT/2-DTK-HXN-12.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-13",
-        "name": "2-DTK-HXN-13",
-        "path": "TN THPT/2-DTK-HXN-13.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-14",
-        "name": "2-DTK-HXN-14",
-        "path": "TN THPT/2-DTK-HXN-14.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-15",
-        "name": "2-DTK-HXN-15",
-        "path": "TN THPT/2-DTK-HXN-15.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-16",
-        "name": "2-DTK-HXN-16",
-        "path": "TN THPT/2-DTK-HXN-16.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-17",
-        "name": "2-DTK-HXN-17",
-        "path": "TN THPT/2-DTK-HXN-17.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-18",
-        "name": "2-DTK-HXN-18",
-        "path": "TN THPT/2-DTK-HXN-18.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-19",
-        "name": "2-DTK-HXN-19",
-        "path": "TN THPT/2-DTK-HXN-19.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-20",
-        "name": "2-DTK-HXN-20",
-        "path": "TN THPT/2-DTK-HXN-20.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-21",
-        "name": "2-DTK-HXN-21",
-        "path": "TN THPT/2-DTK-HXN-21.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-22",
-        "name": "2-DTK-HXN-22",
-        "path": "TN THPT/2-DTK-HXN-22.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-23",
-        "name": "2-DTK-HXN-23",
-        "path": "TN THPT/2-DTK-HXN-23.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-24",
-        "name": "2-DTK-HXN-24",
-        "path": "TN THPT/2-DTK-HXN-24.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-25",
-        "name": "2-DTK-HXN-25",
-        "path": "TN THPT/2-DTK-HXN-25.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-HXN-26",
-        "name": "2-DTK-HXN-26",
-        "path": "TN THPT/2-DTK-HXN-26.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-11",
-        "name": "2-DTK-PNL-11",
-        "path": "TN THPT/2-DTK-PNL-11.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-12",
-        "name": "2-DTK-PNL-12",
-        "path": "TN THPT/2-DTK-PNL-12.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-13",
-        "name": "2-DTK-PNL-13",
-        "path": "TN THPT/2-DTK-PNL-13.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-14",
-        "name": "2-DTK-PNL-14",
-        "path": "TN THPT/2-DTK-PNL-14.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-15",
-        "name": "2-DTK-PNL-15",
-        "path": "TN THPT/2-DTK-PNL-15.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-16",
-        "name": "2-DTK-PNL-16",
-        "path": "TN THPT/2-DTK-PNL-16.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-17",
-        "name": "2-DTK-PNL-17",
-        "path": "TN THPT/2-DTK-PNL-17.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-18",
-        "name": "2-DTK-PNL-18",
-        "path": "TN THPT/2-DTK-PNL-18.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-19",
-        "name": "2-DTK-PNL-19",
-        "path": "TN THPT/2-DTK-PNL-19.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-20",
-        "name": "2-DTK-PNL-20",
-        "path": "TN THPT/2-DTK-PNL-20.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-21",
-        "name": "2-DTK-PNL-21",
-        "path": "TN THPT/2-DTK-PNL-21.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-22",
-        "name": "2-DTK-PNL-22",
-        "path": "TN THPT/2-DTK-PNL-22.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-23",
-        "name": "2-DTK-PNL-23",
-        "path": "TN THPT/2-DTK-PNL-23.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    },
-    {
-        "id": "2-DTK-PNL-24",
-        "name": "2-DTK-PNL-24",
-        "path": "TN THPT/2-DTK-PNL-24.html",
-        "group": "TN THPT",
-        "mon": "TN THPT",
-        "lop": "12",
-        "date": "10/05/2026"
-    }
-
 ]
